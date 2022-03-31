@@ -346,11 +346,11 @@ func dialerFromEnv(proxy *ProxyHttpServer) func(network, addr string) (net.Conn,
 }
 
 func (proxy *ProxyHttpServer) NewConnectDialToProxy(https_proxy string) func(network, addr string) (net.Conn, error) {
-	fmt.Println("执行了dial")
 	return proxy.NewConnectDialToProxyWithHandler(https_proxy, nil)
 }
 
 func (proxy *ProxyHttpServer) NewConnectDialToProxyWithHandler(https_proxy string, connectReqHandler func(req *http.Request)) func(network, addr string) (net.Conn, error) {
+	fmt.Println("执行了dial")
 	u, err := url.Parse(https_proxy)
 	if err != nil {
 		return nil
